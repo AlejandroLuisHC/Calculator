@@ -74,9 +74,9 @@ function init(){
 
 }
     //Auxiliar Variables
-var operandA
-var operandB
-var operator
+var operandA;
+var operandB;
+var operator;
 
     //calculator functions
 function clean(){
