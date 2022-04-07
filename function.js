@@ -2,6 +2,7 @@ function init(){
     //variables in the calculator
     const
         result             = document.getElementById('result')
+        , tracker          = document.getElementById('tracker')
         , parenthesisOpen  = document.getElementById('parenthesisOpen')
         , parenthesisClose = document.getElementById('parenthesisClose')
         , percent          = document.getElementById('percent')
@@ -39,30 +40,35 @@ function init(){
     nine.onclick                =()=> result.textContent += "9";
     float.onclick               =()=> result.textContent += ".";
     percent.onclick             =()=> result.textContent = parseFloat(result.textContent) / 100;  
-    allClear.onclick            =()=> clear();
+    allClear.onclick            =()=> allClear();
 
     add.onclick = function(e){
         operandA = result.textContent;
+        tracker.textContent = operandA + "+";
         operator = "+";
         clean();
     }
     subtract.onclick = function(e){
         operandA = result.textContent;
+        tracker.textContent = operandA + "-";
         operator = "-";
         clean();
     }
     times.onclick = function(e){
         operandA = result.textContent;
+        tracker.textContent = operandA + "x";
         operator = "x";
         clean();
     }
     divide.onclick = function(e){
         operandA = result.textContent;
+        tracker.textContent = operandA + "/";
         operator = "/";
         clean();
     }
     equals.onclick = function(e){
         operandB = result.textContent;
+        tracker.textContent += operandB;
         solve();
     }
 
@@ -77,7 +83,8 @@ function clean(){
     result.textContent = "";
 }
 
-function clear(){
+function allClear(){
+    tracker.textContent = "";
     result.textContent = "";
     operandA = 0;
     operandB = 0;
@@ -106,6 +113,6 @@ function solve(){
             sol = parseFloat(operandA) % parseFloat(operandB);
             break;
     }
-    clear();
+    allClear();
     result.textContent = sol;
 }
