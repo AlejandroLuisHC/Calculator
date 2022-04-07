@@ -1,0 +1,1 @@
+This is a small project to learn some basic knowledge on HTML, CSS, JS and Git. 
