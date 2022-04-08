@@ -9,7 +9,7 @@ function init() {
         result             = document.getElementById('result')
         , tracker          = document.getElementById('tracker')
         , power            = document.getElementById('power')
-        , sqrt             = document.getElementById('sqrt')
+        , root             = document.getElementById('root')
         , percent          = document.getElementById('percent')
         , allClear         = document.getElementById('allClear')
         , zero             = document.getElementById('zero')
@@ -32,8 +32,6 @@ function init() {
         ;
 
     //events
-    //power.onclick               =()=> result.textContent += "^";
-    //sqrt.onclick                =()=> result.textContent += "√"; 
     zero.onclick                =()=> result.textContent += "0";
     one.onclick                 =()=> result.textContent += "1";
     two.onclick                 =()=> result.textContent += "2";
@@ -98,7 +96,7 @@ function init() {
         }
        
     }
-    sqrt.onclick = function(e) {
+    root.onclick = function(e) {
         if (operator !== "") {
             operandB = result.textContent;
             solve();
