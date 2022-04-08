@@ -165,8 +165,8 @@ function solve() {
             sol = parseFloat(operandA) ** (1 / parseFloat(operandB));
             break;
     }
-    clearSolve();
-    if (sol % 1 === 0) {
-        result.textContent = sol
-    } else {result.textContent = sol.toFixed(3);}   
+    clearSolve(); 
+    sol = Math.round(sol * 1000) / 1000;
+    result.textContent = sol;
 }
+
