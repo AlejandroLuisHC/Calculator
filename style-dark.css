@@ -28,7 +28,7 @@ body {
     
 }
 #equals {
-    background-color: rgb(85, 58, 0);
+    background-color: rgb(182, 103, 0);
     width: 150px;
     border-radius: 10%;
     margin-top: 10px;
@@ -44,10 +44,10 @@ body {
     width: 300px;
     height: 100px;
     line-height: 100px;
-    background-color: rgb(33, 11, 73);
+    background-color: rgb(48, 48, 48);
     border-radius: 15px;
     overflow-y:auto;
-    color: rgb(158, 182, 190);
+    color: rgb(156, 156, 156);
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 #tracker {
@@ -58,18 +58,20 @@ body {
     width: 300px;
     height: 50px;
     line-height: 40px;
-    background-color: rgb(33, 11, 73);
+    background-color: rgb(48, 48, 48);
     border-radius: 15px;
     overflow-y:auto; 
-    color: rgb(158, 182, 190);
+    color: rgb(156, 156, 156);
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     
 }
 #allClear {
     background-color: #121212;
+    color: rgb(182, 103, 0);
 }
 #clean {
     background-color: #121212;
+    color: rgb(182, 103, 0);
 }
 /* The switch - the box around the slider */
 .switch {
