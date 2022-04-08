@@ -31,7 +31,7 @@ function init() {
         , clean            = document.getElementById("clean")
         ;
 
-    //events
+    //events   
     zero.onclick                =()=> result.textContent += "0";
     one.onclick                 =()=> result.textContent += "1";
     two.onclick                 =()=> result.textContent += "2";
@@ -88,21 +88,13 @@ function init() {
         operator = "/";
         clear();
     }
-    equals.onclick = function(e) {
-        if (operator !== "") {
-            operandB = result.textContent;
-            tracker.textContent = operandB;
-            solve();
-        }
-       
-    }
     root.onclick = function(e) {
         if (operator !== "") {
             operandB = result.textContent;
             solve();
         }
         operandA = result.textContent;
-        tracker.textContent = operandA + "√";
+        tracker.textContent = operandA + "√(";
         operator = "√";
         clear();
     }
@@ -112,9 +104,20 @@ function init() {
             solve();
         }
         operandA = result.textContent;
-        tracker.textContent = operandA + "^";
+        tracker.textContent = operandA + "^(";
         operator = "^";
         clear();
+    }
+    equals.onclick = function(e) {
+        if (operator === "^" || operator === "√") {
+            operandB = result.textContent;
+            tracker.textContent += operandB + ")=";
+            solve();
+         } else if (operator !== "") {
+            operandB = result.textContent;
+            tracker.textContent += operandB + "=";
+            solve();
+        }
     }
 }
 
