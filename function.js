@@ -1,10 +1,15 @@
+    //auxiliar variables
+var operandA;
+var operandB;
+var operator = "";
+
 function init(){
     //variables in the calculator
-    const
+        const
         result             = document.getElementById('result')
         , tracker          = document.getElementById('tracker')
-        , parenthesisOpen  = document.getElementById('parenthesisOpen')
-        , parenthesisClose = document.getElementById('parenthesisClose')
+        , power            = document.getElementById('power')
+        , sqrt             = document.getElementById('sqrt')
         , percent          = document.getElementById('percent')
         , allClear         = document.getElementById('allClear')
         , zero             = document.getElementById('zero')
@@ -23,11 +28,12 @@ function init(){
         , float            = document.getElementById("float")
         , equals           = document.getElementById("equals")
         , add              = document.getElementById("add")
+        , clean            = document.getElementById("clean")
         ;
 
     //events
-    parenthesisOpen.onclick     =()=> result.textContent += "(";
-    parenthesisClose.onclick    =()=> result.textContent += ")";
+    //power.onclick               =()=> result.textContent += "^";
+    //sqrt.onclick                =()=> result.textContent += "√"; 
     zero.onclick                =()=> result.textContent += "0";
     one.onclick                 =()=> result.textContent += "1";
     two.onclick                 =()=> result.textContent += "2";
@@ -40,50 +46,93 @@ function init(){
     nine.onclick                =()=> result.textContent += "9";
     float.onclick               =()=> result.textContent += ".";
     percent.onclick             =()=> result.textContent = parseFloat(result.textContent) / 100;  
-    allClear.onclick            =()=> allClear();
+    allClear.onclick            =()=> clearAll();
+    clean.onclick               =()=> clear();
 
+    
     add.onclick = function(e){
+        if(operator !== ""){
+            operandB = result.textContent;
+            solve();
+        }
         operandA = result.textContent;
         tracker.textContent = operandA + "+";
         operator = "+";
-        clean();
+        clear();
     }
     subtract.onclick = function(e){
+        if(operator !== ""){
+            operandB = result.textContent;
+            solve();
+        }
         operandA = result.textContent;
         tracker.textContent = operandA + "-";
         operator = "-";
-        clean();
+        clear();
     }
     times.onclick = function(e){
+        if(operator !== ""){
+            operandB = result.textContent;
+            solve();
+        }
         operandA = result.textContent;
         tracker.textContent = operandA + "x";
         operator = "x";
-        clean();
+        clear();
     }
     divide.onclick = function(e){
+        if(operator !== ""){
+            operandB = result.textContent;
+            solve();
+        }
         operandA = result.textContent;
         tracker.textContent = operandA + "/";
         operator = "/";
-        clean();
+        clear();
     }
     equals.onclick = function(e){
-        operandB = result.textContent;
-        tracker.textContent += operandB;
-        solve();
+        if(operator !== ""){
+            operandB = result.textContent;
+            tracker.textContent = operandB;
+            solve();
+        }
+       
     }
-
+    sqrt.onclick = function(e){
+        if(operator !== ""){
+            operandB = result.textContent;
+            solve();
+        }
+        operandA = result.textContent;
+        tracker.textContent = operandA + "√";
+        operator = "√";
+        clear();
+    }
+    power.onclick = function(e){
+        if(operator !== ""){
+            operandB = result.textContent;
+            solve();
+        }
+        operandA = result.textContent;
+        tracker.textContent = operandA + "^";
+        operator = "^";
+        clear();
+    }
 }
-    //Auxiliar Variables
-var operandA;
-var operandB;
-var operator;
 
     //calculator functions
-function clean(){
+function clear(){
     result.textContent = "";
 }
 
-function allClear(){
+function clearSolve(){
+    result.textContent = "";
+    operandA = 0;
+    operandB = 0;
+    operator = "";
+}
+
+function clearAll(){
     tracker.textContent = "";
     result.textContent = "";
     operandA = 0;
@@ -109,10 +158,15 @@ function solve(){
         case "/":
             sol = parseFloat(operandA) / parseFloat(operandB);
             break;
-        case "%":
-            sol = parseFloat(operandA) % parseFloat(operandB);
+        case "^":
+            sol = parseFloat(operandA) ** parseFloat(operandB);
+            break;
+        case "√":
+            sol = parseFloat(operandA) ** (1 / parseFloat(operandB));
             break;
     }
-    allClear();
-    result.textContent = sol;
+    clearSolve();
+    if (sol % 1 === 0){
+        result.textContent = sol
+    }else{result.textContent = sol.toFixed(3);}   
 }
