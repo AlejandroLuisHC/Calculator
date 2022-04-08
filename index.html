@@ -4,7 +4,7 @@
     <title>
             Calculator
     </title>
-    <link type="text/css" href="style.css" rel="stylesheet">
+    <link type="text/css" href="style-dark.css" rel="stylesheet" id="themes">
 </head>
 <body onload="init();">
     <!--Calculator's structure-->    
@@ -48,11 +48,14 @@
         <td><button id="add">+</button></td>
     </tr>
     <tr>
-        <td></td>
+        <td><label id="switch" class="switch">
+            <input type="checkbox" onchange="toggleTheme()" id="slider">
+            <span class="slider round"></span></td>
         <td></td>
         <td colspan="2"><button id="equals">=</button></td>
     </tr>
     </table>
-<script type="text/javascript" src="function.js"></script>
+<script type="text/javascript" src="calculator.js"></script>
+<script type="text/javascript" src="theme.js"></script>
 </body>
 </html>
